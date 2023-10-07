@@ -1,0 +1,35 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.LINODE_HOST }}
+          username: ${{ secrets.LINODE_USERNAME }}
+          password: ${{ secrets.LINODE_PASSWORD }}
+          script: |
+            cd Impact-Fusion-NASA-Space-App
+            git checkout main
+            git pull
+
+            # save environment variables in .env file
+            echo "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=${{ secrets.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY }}" > .env
+            echo "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET=${{ secrets.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET }}" >> .env
+            echo "SOCIAL_AUTH_GITHUB_KEY=${{ secrets.SOCIAL_AUTH_GITHUB_KEY }}" >> .env
+            echo "SOCIAL_AUTH_GITHUB_SECRET=${{ secrets.SOCIAL_AUTH_GITHUB_SECRET }}" >> .env
+            export GIT_SHA=${{ github.sha }}
+
+            # build new image and run new container
+            docker compose up -d --build
