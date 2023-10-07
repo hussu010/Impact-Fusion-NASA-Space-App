@@ -136,13 +136,13 @@ AUTHENTICATION_BACKENDS = (
 DJOSER = {
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
         'http://nasa-hackathon.merodera.com', 'http://nasa-hackathon.merodera.com/github', \
-        'http://localhost:8000'
+        'http://localhost:8000', 'http://localhost:8000/github'
     ]
 }
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', default='')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', default='')
-SOCIAL_AUTH_GITHUB_KEY = '<YOUR_CLIENT_ID>'
-SOCIAL_AUTH_GITHUB_SECRET = '<YOUR_CLIENT_SECRET>'
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY', default='')
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET', default='')
 
 CORS_ALLOW_ALL_ORIGINS = True
