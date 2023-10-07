@@ -17,3 +17,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy the current directory contents into the container
 COPY . /app/
+
+RUN python manage.py collectstatic --noinput
