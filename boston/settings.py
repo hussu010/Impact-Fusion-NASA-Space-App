@@ -1,4 +1,5 @@
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +14,7 @@ SECRET_KEY = 'django-insecure-(wrte!f_n7^p*!pmr9zvbgqxct(--cl7^6$omvvwa0$b4w-e1+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.105.62.58', '127.0.0.1', 'nasa-hackathon.merodera.com']
+ALLOWED_HOSTS = ['172.105.62.58', '127.0.0.1', 'nasa-hackathon.merodera.com', 'localhost']
 
 
 # Application definition
@@ -134,13 +135,13 @@ AUTHENTICATION_BACKENDS = (
 
 DJOSER = {
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
-        'http://localhost:8000/google-login/callback/',
-        'http://localhost:8000/github-login/callback/',
-    ],
+        'http://nasa-hackathon.merodera.com', 'http://nasa-hackathon.merodera.com/github', \
+        'http://localhost:8000'
+    ]
 }
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<YOUR_APP_ID>'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<YOUR_APP_SECRET>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', default='')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', default='')
 SOCIAL_AUTH_GITHUB_KEY = '<YOUR_CLIENT_ID>'
 SOCIAL_AUTH_GITHUB_SECRET = '<YOUR_CLIENT_SECRET>'
 
