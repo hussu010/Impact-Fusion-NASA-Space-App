@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'social_django',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -153,3 +155,5 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<YOUR_APP_ID>'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<YOUR_APP_SECRET>'
 SOCIAL_AUTH_GITHUB_KEY = '<YOUR_CLIENT_ID>'
 SOCIAL_AUTH_GITHUB_SECRET = '<YOUR_CLIENT_SECRET>'
+
+CORS_ALLOW_ALL_ORIGINS = True
