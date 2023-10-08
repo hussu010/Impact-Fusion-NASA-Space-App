@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'djoser',
     'social_django',
     'corsheaders',
+    'projects'
 ]
 
 MIDDLEWARE = [
