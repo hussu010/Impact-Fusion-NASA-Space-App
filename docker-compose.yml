@@ -18,6 +18,8 @@ services:
       - django
     volumes:
       - ./static:/usr/share/nginx/html/static/
+      - /etc/letsencrypt/live/nasa-hackathon.tnbswap.com/fullchain.pem:/etc/nginx/certs/fullchain.pem
+      - /etc/letsencrypt/live/nasa-hackathon.tnbswap.com/privkey.pem:/etc/nginx/certs/privkey.pem
 
 volumes:
   sqlite-data:
