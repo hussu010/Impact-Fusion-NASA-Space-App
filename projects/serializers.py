@@ -29,7 +29,6 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        print(validated_data)
         stacks_data = validated_data.pop('stacks', [])
         domains_data = validated_data.pop('domains', [])
         links_data = validated_data.pop('links', [])

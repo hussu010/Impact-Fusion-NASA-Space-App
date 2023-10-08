@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +21,8 @@ INSTALLED_APPS = [
     'djoser',
     'social_django',
     'corsheaders',
-    'projects'
+    'projects',
+    'user_profile',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +98,9 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
+   'AUTH_HEADER_TYPES': ('Bearer',),
+   'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+   'REFRESH_TOKEN_LIFETIME': timedelta(days=28),
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -118,5 +122,3 @@ SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY', default='')
 SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET', default='')
 
 CORS_ALLOW_ALL_ORIGINS = True
-
-APPEND_SLASH = False
