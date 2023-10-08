@@ -113,6 +113,7 @@ DJOSER = {
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
         'http://nasa-hackathon.tnbswap.com', 'http://nasa-hackathon.tnbswap.com/github', \
         'http://localhost:8000', 'http://localhost:8000/github', \
+        'http://localhost:5173', 'http://localhost:5173/github'
     ]
 }
 
