@@ -1,3 +1,4 @@
-FROM nginx:1.25.2
+FROM nginx:latest
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./static/ /usr/share/nginx/html/static/
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf

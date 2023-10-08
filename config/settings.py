@@ -1,12 +1,13 @@
 from pathlib import Path
 from decouple import config
 from datetime import timedelta
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-(wrte!f_n7^p*!pmr9zvbgqxct(--cl7^6$omvvwa0$b4w-e1+'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['172.105.62.58', '127.0.0.1', 'nasa-hackathon.tnbswap.com', 'localhost']
 
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     'projects',
     'user_profile',
     'join_request',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -96,6 +98,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 SIMPLE_JWT = {
