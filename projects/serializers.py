@@ -26,23 +26,23 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = '__all__'
+        exclude = ('user',)
 
     def create(self, validated_data):
         stacks_data = validated_data.pop('stacks', [])
         domains_data = validated_data.pop('domains', [])
         links_data = validated_data.pop('links', [])
-        
+
         project = Project.objects.create(**validated_data)
 
         for stack_data in stacks_data:
             stack, created = Stack.objects.get_or_create(**stack_data)
             project.stacks.add(stack)
-        
+
         for domain_data in domains_data:
             domain, created = Domain.objects.get_or_create(**domain_data)
             project.domains.add(domain)
-        
+
         for link_data in links_data:
             ProjectLink.objects.create(project=project, **link_data)
 

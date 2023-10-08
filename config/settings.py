@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'projects',
     'user_profile',
+    'join_request',
 ]
 
 MIDDLEWARE = [

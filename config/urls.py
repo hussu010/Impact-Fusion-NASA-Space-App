@@ -8,4 +8,5 @@ urlpatterns = [
     path('auth/', include('djoser.social.urls')),
     path('api/', include('projects.urls')),
     path('api/', include('user_profile.urls')),
+    path('api/', include('join_request.urls')),
 ]
