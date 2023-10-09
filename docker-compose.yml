@@ -7,17 +7,19 @@ services:
     volumes:
       - .:/app
       - ./data:/app/data
-
-  nginx:
-    build:
-      context: .
-      dockerfile: nginx/Dockerfile
     ports:
-      - "8000:80"
-    depends_on:
-      - django
-    volumes:
-      - ./static:/usr/share/nginx/html/static/
+      - "8000:8000"
+
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: nginx/Dockerfile
+  #   ports:
+  #     - "8000:80"
+  #   depends_on:
+  #     - django
+  #   volumes:
+  #     - ./static:/usr/share/nginx/html/static/
 
 volumes:
   sqlite-data:
